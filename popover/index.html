@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>HTML Popover</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <style>
+      section {
+        margin: 2rem;
+        background-color: honeydew;
+        height: 100vh;
+      }
+
+      #tooltip-button {
+        anchor-name: --tooltip-button;
+      }
+
+      #tooltip-content {
+        position-anchor: --tooltip-button;
+        inset: unset;
+        bottom: anchor(top);
+        left: anchor(right);
+      }
+    </style>
+    <h1>HTML Popover</h1>
+    <section>
+      <h3>Tooltip</h3>
+      <button type="button" popovertarget="tooltip-content" id="tooltip-button">
+        Show Tooltip
+      </button>
+      <p id="tooltip-content" popover>
+        The <code>position-anchor</code> property works in chrome but not firefox
+      </p>
+    </section>
+  </body>
+</html>
