@@ -4,35 +4,185 @@
     <title>HTML Popover</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
   </head>
   <body>
-    <style>
-      section {
-        margin: 2rem;
-        background-color: honeydew;
-        height: 100vh;
-      }
-
-      #tooltip-button {
-        anchor-name: --tooltip-button;
-      }
-
-      #tooltip-content {
-        position-anchor: --tooltip-button;
-        inset: unset;
-        bottom: anchor(top);
-        left: anchor(right);
-      }
-    </style>
-    <h1>HTML Popover</h1>
+    <h1>
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover"
+        >HTML Popover</a
+      >
+    </h1>
     <section>
+      <style>
+        #modal-content::backdrop {
+          background-color: rgba(0, 0, 0, 50%);
+        }
+        #modal-content {
+          max-width: 70%;
+        }
+      </style>
+      <h3>Modal</h3>
+
+      <button type="button" popovertarget="modal-content" id="modal-button">
+        Show Modal
+      </button>
+
+      <div id="modal-content" popover="manual">
+        <button
+          type="button"
+          popovertarget="modal-content"
+          popovertargetaction="hide"
+        >
+          X
+        </button>
+        <h4>Modal Content</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit esse
+          ullam laudantium officiis similique exercitationem repudiandae eius
+          nostrum quo nihil quidem, quis neque atque, architecto nam est nobis
+          repellat? Distinctio?
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <style>
+        #sidebar-content {
+          position: fixed;
+          inset: unset;
+          left: 0;
+          top: 0;
+          height: 100vh;
+          width: 20vw;
+        }
+      </style>
+      <h3>Sidebar</h3>
+
+      <button type="button" popovertarget="sidebar-content" id="sidebar-button">
+        Show Sidebar
+      </button>
+
+      <div id="sidebar-content" popover="auto">
+        <h4>Sidebar Content</h4>
+
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit esse
+          ullam laudantium officiis similique exercitationem repudiandae eius
+          nostrum quo nihil quidem, quis neque atque, architecto nam est nobis
+          repellat? Distinctio?
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <style>
+        #tooltip-button {
+          anchor-name: --tooltip-button;
+        }
+
+        #tooltip-content {
+          position-anchor: --tooltip-button;
+          inset: unset;
+          bottom: anchor(top);
+          left: anchor(50%);
+        }
+      </style>
       <h3>Tooltip</h3>
       <button type="button" popovertarget="tooltip-content" id="tooltip-button">
         Show Tooltip
       </button>
       <p id="tooltip-content" popover>
-        The <code>position-anchor</code> property works in chrome but not firefox
+        The
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-anchor"
+        >
+          <code>position-anchor</code>
+        </a>
+        property works in chrome but not firefox
       </p>
     </section>
+    <section>
+      <style>
+        #menu-button {
+          anchor-name: --menu-button;
+        }
+        #main-menu {
+          anchor-name: --main-menu;
+          position-anchor: --menu-button;
+          inset: unset;
+          top: anchor(bottom);
+          left: anchor(right);
+          position-try-fallbacks: flip-block, flip-inline;
+        }
+        #nested-menu-1-button {
+          anchor-name: --nested-menu-1-button;
+        }
+        #nested-menu-2-button {
+          anchor-name: --nested-menu-2-button;
+        }
+        #nested-menu-1 {
+          position-anchor: --nested-menu-1-button;
+          inset: unset;
+          top: anchor(bottom);
+          left: anchor(right);
+        }
+        #nested-menu-2 {
+          position-anchor: --nested-menu-2-button;
+          inset: unset;
+          top: anchor(bottom);
+          left: anchor(right);
+        }
+      </style>
+      <h3>Menu</h3>
+      <p>
+        Automatically stay in view with
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks"
+        >
+          <code>position-try-fallbacks</code>
+        </a>
+      </p>
+      <button id="menu-button" popovertarget="main-menu">Show Menu</button>
+      <menu id="main-menu" popover>
+        <li>
+          <button
+            type="button"
+            id="nested-menu-1-button"
+            popovertarget="nested-menu-1"
+          >
+            nested menu 1
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            id="nested-menu-2-button"
+            popovertarget="nested-menu-2"
+          >
+            nested menu 2
+          </button>
+        </li>
+      </menu>
+      <menu id="nested-menu-1" popover>
+        <li>menu 1 item 1</li>
+        <li>menu 1 item 2</li>
+        <li>menu 1 item 3</li>
+        <li>menu 1 item 4</li>
+      </menu>
+      <menu id="nested-menu-2" popover>
+        <li>menu 2 item 1</li>
+        <li>menu 2 item 2</li>
+      </menu>
+    </section>
+    <footer>
+      <style>
+        footer {
+          height: 20vh;
+        }
+      </style>
+      footer
+    </footer>
   </body>
 </html>
